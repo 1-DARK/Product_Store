@@ -31,7 +31,13 @@ app.post("/api/products", async (req, res) => {
 app.delete("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
-  } catch (error) {}
+    await Product.findByIdAndDelete(id); // Find and delete id
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
 });
 app.listen(3000, () => {
   connectDB(); // db connected
