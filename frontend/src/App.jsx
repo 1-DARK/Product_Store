@@ -4,20 +4,24 @@ import "./App.css";
 
 function App() {
   return (
-    <Drawer.Root>
-      <Drawer.Backdrop />
-      <Drawer.Trigger />
-      <Drawer.Positioner>
-        <Drawer.Content>
-          <Drawer.CloseTrigger />
-          <Drawer.Header>
-            <Drawer.Title />
-          </Drawer.Header>
-          <Drawer.Body />
-          <Drawer.Footer />
-        </Drawer.Content>
-      </Drawer.Positioner>
-    </Drawer.Root>
+    <Stack maxW="320px">
+      <For each={["subtle", "surface", "outline"]}>
+        {(variant) => (
+          <CheckboxCard.Root
+            defaultChecked
+            key={variant}
+            variant={variant}
+            colorPalette="teal"
+          >
+            <CheckboxCard.HiddenInput />
+            <CheckboxCard.Control>
+              <CheckboxCard.Label>Checkbox {variant}</CheckboxCard.Label>
+              <CheckboxCard.Indicator />
+            </CheckboxCard.Control>
+          </CheckboxCard.Root>
+        )}
+      </For>
+    </Stack>
   );
 }
 
