@@ -57,7 +57,6 @@ app.put("/api/products/:id", async (req, res) => {
     const updatedProduct = await Product.findByIdAndUpdate(id, product, {
       new: true,
     }); // Find and delete id
-    console.log("YAA");
     return res.status(200).json({
       success: true,
       data: updatedProduct,
