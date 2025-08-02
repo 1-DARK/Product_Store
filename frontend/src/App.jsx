@@ -1,14 +1,18 @@
 import { useState } from "react";
 import "./App.css";
-import { QrCode } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <QrCode.Root value="https://www.google.com">
-      <QrCode.Frame>
-        <QrCode.Pattern />
-      </QrCode.Frame>
-    </QrCode.Root>
+    <Box minH={"100vh"}>
+      <Navbar>
+        <Routes>
+          <Route path="/" element={<Homepage></Homepage>}></Route>
+          <Route path="/create" element={<createpage></createpage>}></Route>
+        </Routes>
+      </Navbar>
+    </Box>
   );
 }
 
