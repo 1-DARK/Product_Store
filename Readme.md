@@ -15,3 +15,6 @@
 - % npm create vite@latest .
 - npm i
 - chakra ui installation
+- npm i @chakra-ui/react @emotion/react
+- npx @chakra-ui/cli snippet add
+- npm i -D vite-tsconfig-paths
