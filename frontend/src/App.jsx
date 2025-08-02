@@ -1,14 +1,25 @@
 import { useState } from "react";
-import "./App.css";
-import { QrCode } from "@chakra-ui/react";
 
+import "./index.css";
+import App from "./App.jsx";
 function App() {
   return (
-    <QrCode.Root value="https://www.google.com">
-      <QrCode.Frame>
-        <QrCode.Pattern />
-      </QrCode.Frame>
-    </QrCode.Root>
+    <Steps.Root>
+      <Steps.List>
+        <Steps.Item>
+          <Steps.Trigger>
+            <Steps.Indicator />
+            <Steps.Title />
+            <Steps.Description />
+          </Steps.Trigger>
+          <Steps.Separator />
+        </Steps.Item>
+      </Steps.List>
+      <Steps.Content />
+      <Steps.CompletedContent />
+      <Steps.PrevTrigger />
+      <Steps.NextTrigger />
+    </Steps.Root>
   );
 }
 
