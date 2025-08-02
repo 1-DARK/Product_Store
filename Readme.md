@@ -1,3 +1,5 @@
+# Backend
+
 - npm init -y
 - npm install express mongoose dotenv
 - Run server.js (node ./backend/server.js)
@@ -7,3 +9,5 @@
 - change ip address
 - in postman :
   GET:get the data , DELETE : delete data, POST:Send data ,PUT:Updation
+
+# Frontend
