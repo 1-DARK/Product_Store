@@ -11,3 +11,7 @@
   GET:get the data , DELETE : delete data, POST:Send data ,PUT:Updation
 
 # Frontend
+
+- % npm create vite@latest .
+- npm i
+- chakra ui installation
