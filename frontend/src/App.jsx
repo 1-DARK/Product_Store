@@ -1,27 +1,14 @@
 import { useState } from "react";
-import { Drawer } from "@chakra-ui/react";
 import "./App.css";
+import { QrCode } from "@chakra-ui/react";
 
 function App() {
   return (
-    <Stack maxW="320px">
-      <For each={["subtle", "surface", "outline"]}>
-        {(variant) => (
-          <CheckboxCard.Root
-            defaultChecked
-            key={variant}
-            variant={variant}
-            colorPalette="teal"
-          >
-            <CheckboxCard.HiddenInput />
-            <CheckboxCard.Control>
-              <CheckboxCard.Label>Checkbox {variant}</CheckboxCard.Label>
-              <CheckboxCard.Indicator />
-            </CheckboxCard.Control>
-          </CheckboxCard.Root>
-        )}
-      </For>
-    </Stack>
+    <QrCode.Root value="https://www.google.com">
+      <QrCode.Frame>
+        <QrCode.Pattern />
+      </QrCode.Frame>
+    </QrCode.Root>
   );
 }
 
