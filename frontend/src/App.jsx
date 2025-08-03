@@ -1,5 +1,3 @@
-import { useState } from "react";
-import "./App.css";
 import { Box } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
