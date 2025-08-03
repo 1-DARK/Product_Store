@@ -4,7 +4,7 @@ import { Container, Flex, HStack, Text } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
 import { LuMoon, LuSun } from "react-icons/lu";
-import { FiShoppingCart } from "react-icons/fi";
+import { PiShoppingCartSimpleFill } from "react-icons/pi";
 
 import { Link } from "react-router-dom";
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
         >
           <Link to={"/"}>
             <HStack>
-              Product Store <FiShoppingCart />
+              Product Store <PiShoppingCartSimpleFill />
             </HStack>
           </Link>
         </Text>
