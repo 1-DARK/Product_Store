@@ -31,7 +31,7 @@ const CreatePage = () => {
       if (!productData.name || !productData.price || !productData.image) {
         toast.error("All fields are required.", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -46,7 +46,7 @@ const CreatePage = () => {
       if (!success) {
         toast.error(message, {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -55,7 +55,7 @@ const CreatePage = () => {
       } else {
         toast.success(message, {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -73,7 +73,7 @@ const CreatePage = () => {
       console.error("Error adding product:", error);
       toast.error("An unexpected error occurred. Please try again.", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
