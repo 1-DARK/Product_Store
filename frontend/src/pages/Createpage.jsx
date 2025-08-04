@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Container, Heading, VStack, Box, Button } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
+import { useProductStore } from "@/store/product";
 const Createpage = () => {
-  const [newP, setnewP] = useState({
+  const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
     image: "",
   });
+  const { createProduct } = useProductStore();
   const handleAddProduct = () => {
+    createProduct(newProduct);
     // Reset form fields after submissions
-    setnewP({
+    setNewProduct({
       name: "",
       price: "",
       image: "",
@@ -28,21 +31,27 @@ const Createpage = () => {
             <Input
               placeholder="Product Name"
               name="name"
-              value={newP.name}
-              onChange={(e) => setnewP({ ...newP, name: e.target.value })}
+              value={newProduct.name}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, name: e.target.value })
+              }
             />
             <Input
               placeholder="Price"
               name="price"
               type="number"
-              value={newP.price}
-              onChange={(e) => setnewP({ ...newP, price: e.target.value })}
+              value={newProduct.price}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, price: e.target.value })
+              }
             />
             <Input
               placeholder="Image URL"
               name="image"
-              value={newP.image}
-              onChange={(e) => setnewP({ ...newP, image: e.target.value })}
+              value={newProduct.image}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, image: e.target.value })
+              }
             />
             <Button bgColor={"blue.600"} w={"full"} onClick={handleAddProduct}>
               Add Product
