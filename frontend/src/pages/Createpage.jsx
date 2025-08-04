@@ -10,23 +10,16 @@ const Createpage = () => {
   });
   const { createProduct } = useProductStore();
   const handleAddProduct = async () => {
+    console.log(newProduct);
     const { success, message } = await createProduct(newProduct);
-    if (!success) {
-      toast({
-        title: "Error",
-        description: message,
-        status: "error",
-        isClosable: true,
-      });
-    } else {
-      toast({
-        title: "Success",
-        description: message,
-        status: "success",
-        isClosable: true,
-      });
-    }
-    setNewProduct({ name: "", price: "", image: "" });
+    console.log("Sucess", success);
+    console.log("Message", message);
+    // Reset form fields after submissions
+    setNewProduct({
+      name: "",
+      price: "",
+      image: "",
+    });
   };
   return (
     <Container w={"2xl"}>
