@@ -19,3 +19,4 @@
 - npx @chakra-ui/cli snippet add
 - npm i -D vite-tsconfig-paths
 - npm i react-router-dom
+- npm i zustand
