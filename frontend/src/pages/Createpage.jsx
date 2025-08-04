@@ -9,7 +9,7 @@ const Createpage = () => {
   });
   const handleAddProduct = () => {
     console.log(newP);
-    // Reset form fields after submission
+    // Reset form fields after submissions
     setnewP({
       name: "",
       price: "",
