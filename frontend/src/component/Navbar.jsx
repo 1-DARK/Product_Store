@@ -5,7 +5,6 @@ import { IconButton } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
 import { LuMoon, LuSun } from "react-icons/lu";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
-
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const { toggleColorMode, colorMode } = useColorMode();
