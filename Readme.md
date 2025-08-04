@@ -20,3 +20,4 @@
 - npm i -D vite-tsconfig-paths
 - npm i react-router-dom
 - npm i zustand
+- npm install react-toastify
