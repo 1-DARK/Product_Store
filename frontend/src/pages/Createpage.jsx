@@ -8,7 +8,6 @@ const Createpage = () => {
     image: "",
   });
   const handleAddProduct = () => {
-    console.log(newP);
     // Reset form fields after submissions
     setnewP({
       name: "",
