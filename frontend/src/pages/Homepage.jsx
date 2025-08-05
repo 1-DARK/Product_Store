@@ -1,5 +1,13 @@
-import { Container, VStack, HStack, Text } from "@chakra-ui/react";
+import {
+  Container,
+  VStack,
+  HStack,
+  Text,
+  Box,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import { IoRocketOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 import React from "react";
 
@@ -17,6 +25,34 @@ const Homepage = () => {
           <HStack>
             Current Products <IoRocketOutline />
           </HStack>
+        </Text>
+
+        <SimpleGrid
+          columns={{
+            base: 1,
+            md: 2,
+            lg: 3,
+          }}
+          spacing={10}
+          w={full}
+        ></SimpleGrid>
+
+        <Text
+          fontSize={"xl"}
+          textAlign={"center"}
+          fontWeight={"bold"}
+          color={"gray.500"}
+        >
+          No Products Found {""}
+          <Link to={"/create"}>
+            <Text
+              as={"span"}
+              color={"blue.500"}
+              _hover={{ textDecoration: "underline" }}
+            >
+              Create a Product
+            </Text>
+          </Link>
         </Text>
       </VStack>
     </Container>
