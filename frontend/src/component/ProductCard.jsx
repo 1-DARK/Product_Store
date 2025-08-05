@@ -10,10 +10,50 @@ import { MdMovieEdit } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
 import React from "react";
 import { useColorModeValue } from "@/components/ui/color-mode";
+import { useProductStore } from "@/store/product";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductCard = ({ product }) => {
   const textColor = useColorModeValue("gray.600", "gray.200");
   const bg = useColorModeValue("white", "gray.800");
+  const { deleteproduct } = useProductStore();
+
+  const handleDeleteProduct = async (pid) => {
+    try {
+      const result = await deleteproduct(pid);
+
+      if (!result.success) {
+        toast.error("All fields are required.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      } else {
+        toast.success("All fields are required.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
+    } catch (error) {
+      toast.error(message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
+  };
+
   return (
     <Box
       shadow={"lg"}
@@ -25,6 +65,7 @@ const ProductCard = ({ product }) => {
       w={{ base: "full", md: "sm" }} // Medium size: full width on mobile, 16rem (sm) on larger screens
       maxW="400px" // Caps the width for medium size
     >
+      <ToastContainer />
       <Image
         src={product.image}
         alt={product.name}
@@ -33,6 +74,7 @@ const ProductCard = ({ product }) => {
         objectFit={"cover"} // Fills the space, cropping excess
         objectPosition="center" // Centers the image
       />
+
       <Box p={"4"}>
         <Heading as={"h3"} size={"md"} mb={"2"}>
           {product.name}
@@ -44,7 +86,7 @@ const ProductCard = ({ product }) => {
           <IconButton>
             <MdMovieEdit />
           </IconButton>
-          <IconButton onClick={handleDeleteProduct}>
+          <IconButton onClick={() => handleDeleteProduct(product._id)}>
             <MdOutlineDelete />
           </IconButton>
         </HStack>
