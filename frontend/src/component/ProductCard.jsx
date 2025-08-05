@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
           <IconButton>
             <MdMovieEdit />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleDeleteProduct}>
             <MdOutlineDelete />
           </IconButton>
         </HStack>
