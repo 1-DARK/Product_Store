@@ -10,6 +10,9 @@ const Homepage = () => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
+  useEffect(() => {
+    console.log("Products updated:", products);
+  }, [products]);
   console.log("Products", products);
   return (
     <Container py={"12"} maxW="container.xl">

@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { MdMovieEdit } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
-import React from "react";
+import React, { useState } from "react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { useProductStore } from "@/store/product";
 import { toast } from "react-toastify";
@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
           draggable: true,
         });
       } else {
-        toast.success(result?.message || "Product deleted successfully", {
+        toast.success(result?.message || "Product Deleted Successfully", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
