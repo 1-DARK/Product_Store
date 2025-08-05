@@ -11,7 +11,7 @@ import { MdOutlineDelete } from "react-icons/md";
 import React from "react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { useProductStore } from "@/store/product";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ProductCard = ({ product }) => {
@@ -22,9 +22,9 @@ const ProductCard = ({ product }) => {
   const handleDeleteProduct = async (pid) => {
     try {
       const result = await deleteproduct(pid);
-
-      if (!result.success) {
-        toast.error("All fields are required.", {
+      console.log("Delete result:", result); // Debug: Log the result
+      if (!result?.success) {
+        toast.error(result?.message || "Failed to delete product", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
           draggable: true,
         });
       } else {
-        toast.success("All fields are required.", {
+        toast.success(result?.message || "Product deleted successfully", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -43,14 +43,18 @@ const ProductCard = ({ product }) => {
         });
       }
     } catch (error) {
-      toast.error(message, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      console.error("Delete error:", error); // Debug: Log any errors
+      toast.error(
+        error.message || "An error occurred while deleting the product",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
+      );
     }
   };
 
@@ -65,7 +69,6 @@ const ProductCard = ({ product }) => {
       w={{ base: "full", md: "sm" }} // Medium size: full width on mobile, 16rem (sm) on larger screens
       maxW="400px" // Caps the width for medium size
     >
-      <ToastContainer />
       <Image
         src={product.image}
         alt={product.name}
@@ -74,7 +77,6 @@ const ProductCard = ({ product }) => {
         objectFit={"cover"} // Fills the space, cropping excess
         objectPosition="center" // Centers the image
       />
-
       <Box p={"4"}>
         <Heading as={"h3"} size={"md"} mb={"2"}>
           {product.name}
