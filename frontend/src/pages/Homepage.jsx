@@ -1,15 +1,10 @@
-import {
-  Container,
-  VStack,
-  HStack,
-  Text,
-  Box,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Container, VStack, HStack, Text, SimpleGrid } from "@chakra-ui/react";
 import { IoRocketOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useProductStore } from "@/store/product";
+import ProductCard from "@/component/ProductCard";
+
 const Homepage = () => {
   const { fetchProducts, products } = useProductStore();
   useEffect(() => {
@@ -17,7 +12,7 @@ const Homepage = () => {
   }, [fetchProducts]);
   console.log("Products", products);
   return (
-    <Container maxW="2xl" py={"12"}>
+    <Container py={"12"} maxW="container.xl">
       <VStack spacing={8}>
         <Text
           fontSize={{ base: "22px", sm: "28px" }}
@@ -30,18 +25,20 @@ const Homepage = () => {
             Current Products <IoRocketOutline />
           </HStack>
         </Text>
-
+        <br />
         <SimpleGrid
           columns={{
             base: 1,
             md: 2,
             lg: 3,
           }}
-          spacing={10}
-          w={full}
+          w="full" // Full width for larger boxes
+          maxW="1200px" // Maximum width for the grid
+          gapX={"14"}
+          gapY={"14"}
         >
           {products.map((product) => (
-            <ProductCard />
+            <ProductCard key={product._id} product={product} />
           ))}
         </SimpleGrid>
         <Text
