@@ -8,10 +8,14 @@ import {
 } from "@chakra-ui/react";
 import { IoRocketOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useProductStore } from "@/store/product";
 const Homepage = () => {
+  const { fetchProducts, products } = useProductStore();
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+  console.log("Products", products);
   return (
     <Container maxW="2xl" py={"12"}>
       <VStack spacing={8}>
@@ -35,8 +39,11 @@ const Homepage = () => {
           }}
           spacing={10}
           w={full}
-        ></SimpleGrid>
-
+        >
+          {products.map((product) => (
+            <ProductCard />
+          ))}
+        </SimpleGrid>
         <Text
           fontSize={"xl"}
           textAlign={"center"}
