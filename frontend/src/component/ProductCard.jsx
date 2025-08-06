@@ -8,7 +8,8 @@ import {
 } from "@chakra-ui/react";
 import { MdMovieEdit } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import React from "react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { useProductStore } from "@/store/product";
 import { toast } from "react-toastify";
@@ -86,7 +87,9 @@ const ProductCard = ({ product }) => {
         </Text>
         <HStack>
           <IconButton>
-            <MdMovieEdit />
+            <Link to={"/update"}>
+              <MdMovieEdit />
+            </Link>
           </IconButton>
           <IconButton onClick={() => handleDeleteProduct(product._id)}>
             <MdOutlineDelete />

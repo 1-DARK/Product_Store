@@ -5,6 +5,7 @@ import Createpage from "./pages/Createpage";
 import Navbar from "./component/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Update from "./pages/Update";
 function App() {
   return (
     <Box minH={"100vh"}>
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/create" element={<Createpage />} />
+        <Route path="/update" element={<Update />} />
       </Routes>
       <ToastContainer />
     </Box>
