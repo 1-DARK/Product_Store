@@ -36,4 +36,24 @@ export const useProductStore = create((set) => ({
     }));
     return { success: true, message: data.message };
   },
+  updateProduct: async (pid, formdata) => {
+    const res = await fetch(`/api/products/${pid}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formdata),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      return { success: false, message: data.message };
+    }
+    set((state) => ({
+      products: state.products.map((product) =>
+        product._id === pid ? data.data : product
+      ),
+    }));
+    console.log("HI", formdata);
+    return { success: true, message: data.message };
+  },
 }));

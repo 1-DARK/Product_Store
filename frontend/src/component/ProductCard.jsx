@@ -27,6 +27,32 @@ const ProductCard = ({ product }) => {
     image: product.image,
     price: product.price,
   });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  // Submit updated product data
+  const handleUpdateProduct = async () => {
+    try {
+      const result = await updateProduct(product._id, formData);
+      if (result?.success) {
+        toast.success(result.message || "Product updated successfully", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      } else {
+        toast.error(result?.message || "Failed to update product", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      }
+    } catch (error) {
+      toast.error(error.message || "Update failed", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
+  };
 
   const handleDeleteProduct = async (pid) => {
     try {
@@ -69,11 +95,6 @@ const ProductCard = ({ product }) => {
 
   const handleEditClick = () => {
     setIsModalOpen(true);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -125,26 +146,28 @@ const ProductCard = ({ product }) => {
                       />
 
                       <Input
-                        type="url"
-                        name="image"
-                        value={formData.image}
-                        onChange={handleInputChange}
-                        placeholder="Image URL"
-                      />
-
-                      <Input
                         type="number"
                         name="price"
                         value={formData.price}
                         onChange={handleInputChange}
                         placeholder="Price"
                       />
+
+                      <Input
+                        type="url"
+                        name="image"
+                        value={formData.image}
+                        onChange={handleInputChange}
+                        placeholder="Image URL"
+                      />
                     </Dialog.Body>
                     <Dialog.Footer>
                       <Dialog.ActionTrigger asChild>
                         <Button variant="outline">Cancel</Button>
                       </Dialog.ActionTrigger>
-                      <Button>Save</Button>
+                      <Dialog.ActionTrigger asChild>
+                        <Button onClick={handleUpdateProduct}>Save</Button>
+                      </Dialog.ActionTrigger>
                     </Dialog.Footer>
                     <Dialog.CloseTrigger asChild>
                       <CloseButton size="sm" />
@@ -154,7 +177,9 @@ const ProductCard = ({ product }) => {
               </Portal>
             </Dialog.Root>
           </IconButton>
-          <IconButton onClick={() => handleDeleteProduct(product._id)}>
+          <IconButton
+            onClick={() => handleDeleteProduct(product._id, formData)}
+          >
             <MdOutlineDelete />
           </IconButton>
         </HStack>
