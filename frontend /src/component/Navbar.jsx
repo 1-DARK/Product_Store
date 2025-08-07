@@ -3,7 +3,7 @@ import { CiSquarePlus } from "react-icons/ci";
 import { Container, Flex, HStack, Text } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
-import { LuMoon, LuSun } from "react-icons/lu";
+import { LuSun, LuMoon } from "react-icons/lu";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 const Navbar = () => {
