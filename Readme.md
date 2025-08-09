@@ -1,5 +1,5 @@
 # Product_Store
-
+ 
 A full-stack e-commerce-like application featuring a Node.js/Express backend with MongoDB integration and a Vite + React + Chakra UI frontend.
 
 ## Features
